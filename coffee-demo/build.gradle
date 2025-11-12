@@ -1,0 +1,36 @@
+// plugins are always at the top
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.7'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+// this block can appear anywhere, but it make sense to keep them at the top
+group = 'com.coffee'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo Spring Boot project that follows Mark Hecklers book'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+// must come before dependencies, for them to be resolved
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// usually comes last
+tasks.named('test') {
+	useJUnitPlatform()
+}
