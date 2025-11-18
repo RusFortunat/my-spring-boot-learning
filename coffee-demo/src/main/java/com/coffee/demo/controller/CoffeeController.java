@@ -13,11 +13,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/coffees")
 @Slf4j
-public class RestApiDemoController {
+public class CoffeeController {
 
     CoffeeRepository coffeeRepository;
 
-    public RestApiDemoController(CoffeeRepository coffeeRepository) {
+    public CoffeeController(CoffeeRepository coffeeRepository) {
         this.coffeeRepository = coffeeRepository;
     }
 

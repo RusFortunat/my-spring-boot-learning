@@ -14,3 +14,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+greeting:
+  coffee: ${greeting.name} is drinking Domina Coffee
+  name: Uzkaya Labuba
+
+droid:
+  id: R2-D2
+  description: my awesome droid

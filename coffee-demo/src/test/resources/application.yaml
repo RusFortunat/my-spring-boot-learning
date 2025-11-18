@@ -6,3 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop   # create schema every test
+
+greeting:
+  name: Dakota
+  coffee: ${greeting.name} is drinking Lavazza

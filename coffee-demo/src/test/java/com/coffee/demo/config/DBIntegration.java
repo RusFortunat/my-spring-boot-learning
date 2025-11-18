@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Documented
 @Testcontainers
 @Import(PostgresTestContainerConfig.class)
 public @interface DBIntegration {
