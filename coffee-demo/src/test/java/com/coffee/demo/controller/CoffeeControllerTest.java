@@ -1,6 +1,6 @@
 package com.coffee.demo.controller;
 
-public class RestApiDemoControllerTest {
+public class CoffeeControllerTest {
 
 
 
