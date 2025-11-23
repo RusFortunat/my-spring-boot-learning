@@ -1,0 +1,9 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env, info, health, beans, conditions, configprops, heapdump, loggers, mappings, metrics, threaddump
+        #include: "*"
+  endpoint:
+    health:
+      show-details: always
