@@ -2,7 +2,12 @@ spring:
   application:
     name: planefinder
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: sifehe90
 
-redis:
-  component:
-    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -2,24 +2,27 @@ package com.ruslan.planefinder.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.time.Instant;
-import java.util.Optional;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RedisHash
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Aircraft {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String callsign, squawk, reg, flightno, route, type, category;
     private int altitude, heading, speed;
     @JsonProperty("vert_rate")
@@ -42,33 +45,4 @@ public class Aircraft {
     @JsonProperty("bds40_seen_time")
     private Instant bds40SeenTime;
 
-//    public String getLastSeenTime() {
-//        return lastSeenTime.toString();
-//    }
-//
-//    public void setLastSeenTime(String lastSeenTime) {
-//        this.lastSeenTime = Optional.ofNullable(lastSeenTime)
-//            .map(Instant::parse)
-//            .orElse(Instant.ofEpochSecond(0));
-//    }
-//
-//    public String getPosUpdateTime() {
-//        return posUpdateTime.toString();
-//    }
-//
-//    public void setPosUpdateTime(String posUpdateTime) {
-//        this.posUpdateTime = Optional.ofNullable(posUpdateTime)
-//            .map(Instant::parse)
-//            .orElse(Instant.ofEpochSecond(0));
-//    }
-//
-//    public String getBds40SeenTime() {
-//        return bds40SeenTime.toString();
-//    }
-//
-//    public void setBds40SeenTime(String bds40SeenTime) {
-//        this.bds40SeenTime = Optional.ofNullable(bds40SeenTime)
-//            .map(Instant::parse)
-//            .orElse(Instant.ofEpochSecond(0));
-//    }
 }
