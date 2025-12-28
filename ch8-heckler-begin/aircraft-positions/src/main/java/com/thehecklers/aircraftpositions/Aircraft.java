@@ -1,20 +1,16 @@
-package com.thehecklers.aircraftpositions.entity;
+package com.thehecklers.aircraftpositions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Aircraft {
-    @Id
     private Long id;
     private String callsign, squawk, reg, flightno, route, type, category;
 
