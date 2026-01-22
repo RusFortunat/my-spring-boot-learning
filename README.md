@@ -6,3 +6,6 @@ After working out this book i can say that it is a good start and it does cover 
 
 ## "Spring Boot 3 and Spring Framework 6" Christian Ullenboom
 From intro: "To illustrate the central components of an enterprise application, this book employs an amusing example of a dating application for unicorns". Hell yeah, let's go
+
+## Apache Kafka for Spring Boot Microservices
+I will study this Udemy course by Sergey Kargopolov and collect code examples in this rtepo
