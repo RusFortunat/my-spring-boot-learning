@@ -1,0 +1,15 @@
+package com.appsdeveloperblog.ws.products;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+
+@SpringBootApplication
+@ConfigurationPropertiesScan
+public class ProductsMicroserviceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProductsMicroserviceApplication.class, args);
+	}
+
+}
