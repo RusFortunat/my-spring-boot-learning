@@ -1,5 +1,6 @@
 package com.appsdeveloperblog.ws.products.service;
 
+import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
 import com.appsdeveloperblog.ws.products.config.TopicProperties;
 import com.appsdeveloperblog.ws.products.entity.Product;
 import com.appsdeveloperblog.ws.products.repository.ProductRepository;
