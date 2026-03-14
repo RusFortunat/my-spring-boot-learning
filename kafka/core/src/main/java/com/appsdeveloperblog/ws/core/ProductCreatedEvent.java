@@ -18,6 +18,4 @@ public class ProductCreatedEvent {
     private String title;
     private BigDecimal price;
     private Integer quantity;
-
-
 }
