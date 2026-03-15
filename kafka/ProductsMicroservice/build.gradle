@@ -1,3 +1,9 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
 group = 'com.appsdeveloperblog.ws'
 version = '0.0.1-SNAPSHOT'
 description = 'Products Microservice'
@@ -8,12 +14,19 @@ java {
 	}
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
 	mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    implementation project(':core')
+    implementation 'com.appsdeveloperblog.ws:core:0.0.1-SNAPSHOT'
 	implementation 'org.springframework.boot:spring-boot-starter-kafka'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
