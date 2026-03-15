@@ -15,17 +15,15 @@ public class ProductCreatedEventHandler {
     @KafkaListener(topics="product-created-events-topic", groupId = "product-created-events")
     public void handle(@Payload ProductCreatedEvent event){
 
-        throw new RuntimeException("Test DLT routing");
+//        throw new RuntimeException("Test DLT routing");
 
-//        if (event == null) {
-//            // deserialization failed, check headers for the error
-//            LOGGER.error("Failed to deserialize message");
-//            return;
-//        }
-//
-//        LOGGER.info("Received a new event: " +  event.getTitle());
+        if (event == null) {
+            // deserialization failed, check headers for the error
+            LOGGER.error("Failed to deserialize message");
+            return;
+        }
+
+        LOGGER.info("Received a new event: " +  event.getTitle());
 
     }
-
-
 }
