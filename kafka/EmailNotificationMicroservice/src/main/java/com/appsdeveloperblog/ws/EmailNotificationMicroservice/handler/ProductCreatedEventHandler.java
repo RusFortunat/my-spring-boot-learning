@@ -1,5 +1,6 @@
 package com.appsdeveloperblog.ws.EmailNotificationMicroservice.handler;
 
+import com.appsdeveloperblog.ws.EmailNotificationMicroservice.error.NotRetryableException;
 import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -15,7 +16,9 @@ public class ProductCreatedEventHandler {
     @KafkaListener(topics="product-created-events-topic", groupId = "product-created-events")
     public void handle(@Payload ProductCreatedEvent event){
 
-//        throw new RuntimeException("Test DLT routing");
+        if (true) {
+            throw new NotRetryableException("Non-retryable exception is thrown!");
+        }
 
         if (event == null) {
             // deserialization failed, check headers for the error
