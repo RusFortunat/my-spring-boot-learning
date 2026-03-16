@@ -37,24 +37,24 @@ public class ProductCreatedEventHandler {
             return;
         }
 
-        String theUrl = "http://localhost:8082";
-        try{
-            ResponseEntity<String> response = restTemplate.exchange(theUrl, HttpMethod.GET, null, String.class);
-
-            if(response.getStatusCode().is2xxSuccessful()){
-                LOGGER.info("Received reponse body: {}", response.getBody());
-            }
-
-        } catch (ResourceAccessException exception) {
-            LOGGER.error(exception.getMessage());
-            throw new RetryableException(exception.getMessage());
-        } catch (HttpServerErrorException exception) {
-            LOGGER.error(exception.getMessage());
-            throw new NotRetryableException(exception.getMessage());
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-            throw new NotRetryableException(e.getMessage());
-        }
+//        String theUrl = "http://localhost:8082";
+//        try{
+//            ResponseEntity<String> response = restTemplate.exchange(theUrl, HttpMethod.GET, null, String.class);
+//
+//            if(response.getStatusCode().is2xxSuccessful()){
+//                LOGGER.info("Received reponse body: {}", response.getBody());
+//            }
+//
+//        } catch (ResourceAccessException exception) {
+//            LOGGER.error(exception.getMessage());
+//            throw new RetryableException(exception.getMessage());
+//        } catch (HttpServerErrorException exception) {
+//            LOGGER.error(exception.getMessage());
+//            throw new NotRetryableException(exception.getMessage());
+//        } catch (Exception e) {
+//            LOGGER.error(e.getMessage());
+//            throw new NotRetryableException(e.getMessage());
+//        }
 
         LOGGER.info("Received a new event: " +  event.getTitle());
 
