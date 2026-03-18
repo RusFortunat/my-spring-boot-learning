@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
@@ -25,7 +27,9 @@ public class ProductCreatedEventHandler {
     }
 
     @KafkaListener(topics="product-created-events-topic", groupId = "product-created-events")
-    public void handle(@Payload ProductCreatedEvent event){
+    public void handle(@Payload ProductCreatedEvent event,
+                       @Header("messageId") String messageId,
+                       @Header(KafkaHeaders.RECEIVED_KEY) String messageKey) {
 
 //        if (true) {
 //            throw new NotRetryableException("Non-retryable exception is thrown!");
