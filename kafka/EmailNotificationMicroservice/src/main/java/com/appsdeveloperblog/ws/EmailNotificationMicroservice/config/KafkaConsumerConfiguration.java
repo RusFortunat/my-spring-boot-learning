@@ -2,6 +2,7 @@ package com.appsdeveloperblog.ws.EmailNotificationMicroservice.config;
 
 import com.appsdeveloperblog.ws.EmailNotificationMicroservice.error.NotRetryableException;
 import com.appsdeveloperblog.ws.EmailNotificationMicroservice.error.RetryableException;
+import org.springframework.kafka.KafkaException;
 import org.springframework.kafka.support.serializer.JacksonJsonSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -38,8 +39,7 @@ public class KafkaConsumerConfiguration {
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, environment.getProperty("spring.kafka.consumer.group-id"));
         config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JacksonJsonDeserializer.class);
-        config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES,
-            environment.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
+        config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES,"*");
 
         return new DefaultKafkaConsumerFactory<>(config);
     }
@@ -53,6 +53,7 @@ public class KafkaConsumerConfiguration {
             new FixedBackOff(5000 ,3));
         errorHandler.addNotRetryableExceptions(NotRetryableException.class, HttpServerErrorException.class);
         errorHandler.addRetryableExceptions(RetryableException.class);
+        errorHandler.setLogLevel(KafkaException.Level.ERROR);
 
         ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);

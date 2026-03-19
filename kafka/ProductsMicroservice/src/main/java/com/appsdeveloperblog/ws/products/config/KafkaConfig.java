@@ -42,4 +42,13 @@ public class KafkaConfig {
             .configs(Map.of("min.insync.replicas", props.minInsyncReplicas()))
             .build();
     }
+
+    @Bean
+    NewTopic createDltTopic(TopicProperties props) {
+        return TopicBuilder
+            .name("product-created-events-topic-dlt")
+            .partitions(props.partitions())
+            .replicas(props.replicas())
+            .build();
+    }
 }

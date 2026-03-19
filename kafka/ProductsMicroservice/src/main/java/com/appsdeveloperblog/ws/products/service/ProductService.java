@@ -60,9 +60,10 @@ public class ProductService {
             product.getId().toString(),
             productCreatedEvent
         );
-        record.headers().add("messageId", UUID.randomUUID().toString().getBytes());
+//        record.headers().add("messageId", UUID.randomUUID().toString().getBytes());
+        record.headers().add("messageId", "123".getBytes());
         SendResult<String, ProductCreatedEvent> result =
-            kafkaTemplate.send(topicProperties.name(), product.getId().toString(), productCreatedEvent).get();
+            kafkaTemplate.send(record).get();
 
         log.info("New Product was sent to:");
         log.info("Topic: {}", result.getRecordMetadata().topic());

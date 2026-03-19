@@ -1,39 +1,45 @@
 package com.appsdeveloperblog.ws.EmailNotificationMicroservice.handler;
 
+import com.appsdeveloperblog.ws.EmailNotificationMicroservice.entity.ProcessedEventEntity;
 import com.appsdeveloperblog.ws.EmailNotificationMicroservice.error.NotRetryableException;
-import com.appsdeveloperblog.ws.EmailNotificationMicroservice.error.RetryableException;
+import com.appsdeveloperblog.ws.EmailNotificationMicroservice.repository.ProcessedEventRepository;
 import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
 public class ProductCreatedEventHandler {
 
     private RestTemplate restTemplate;
+    private final ProcessedEventRepository processedEventRepository;
+
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    public ProductCreatedEventHandler(RestTemplate restTemplate) {
+    public ProductCreatedEventHandler(RestTemplate restTemplate,
+                                      ProcessedEventRepository processedEventRepository) {
         this.restTemplate = restTemplate;
+        this.processedEventRepository = processedEventRepository;
     }
 
     @KafkaListener(topics="product-created-events-topic", groupId = "product-created-events")
     public void handle(@Payload ProductCreatedEvent event,
-                       @Header("messageId") String messageId,
-                       @Header(KafkaHeaders.RECEIVED_KEY) String messageKey) {
+                       @Header("messageId") byte[] messageId,
+                       @Header(value = KafkaHeaders.RECEIVED_KEY, required = false) String messageKey) {
 
-//        if (true) {
-//            throw new NotRetryableException("Non-retryable exception is thrown!");
-//        }
+        // check if message was processed before
+        String messageIdStr = new String(messageId);
+        boolean isMessageProcessed = processedEventRepository.existsByMessageId(messageIdStr);
+        if(isMessageProcessed) {
+            LOGGER.info("Message with id " + messageIdStr + " is already processed");
+            return;
+        }
 
         if (event == null) {
             // deserialization failed, check headers for the error
@@ -62,5 +68,11 @@ public class ProductCreatedEventHandler {
 
         LOGGER.info("Received a new event: " +  event.getTitle());
 
+        // avoid processing the Kafka messages twice
+        try {
+            processedEventRepository.save(new ProcessedEventEntity(messageIdStr, event.getId().toString()));
+        } catch (DataIntegrityViolationException e) {
+            throw new NotRetryableException(e);
+        }
     }
 }
