@@ -40,6 +40,7 @@ public class KafkaConsumerConfiguration {
         config.put(ConsumerConfig.GROUP_ID_CONFIG, environment.getProperty("spring.kafka.consumer.group-id"));
         config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JacksonJsonDeserializer.class);
         config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES,"*");
+        config.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, "com.appsdeveloperblog.ws.core.ProductCreatedEvent");
 
         return new DefaultKafkaConsumerFactory<>(config);
     }

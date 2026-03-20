@@ -10,29 +10,6 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-//    Map<String, Object> producerConfigs() {
-//        Map<String, Object> config = new HashMap<>();
-//        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, producerProperties.bootstrapServers());
-//        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, producerProperties.keySerializer());
-//        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, producerProperties.valueSerializer());
-//        config.put(ProducerConfig.ACKS_CONFIG, producerProperties.acks());
-//        config.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, producerProperties.propertiesDeliveryTimeoutMs());
-//        config.put(ProducerConfig.LINGER_MS_CONFIG, producerProperties.propertiesLingerMs());
-//        config.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, producerProperties.propertiesRequestTimeoutMs());
-//
-//        return config;
-//    }
-//
-//    @Bean
-//    ProducerFactory<String, ProductCreatedEvent> producerFactory() {
-//        return new DefaultKafkaProducerFactory<>(producerConfigs());
-//    }
-//
-//    @Bean
-//    KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate() {
-//        return new KafkaTemplate<>(producerFactory());
-//    }
-
     @Bean
     NewTopic createTopic(TopicProperties props) {
         return TopicBuilder

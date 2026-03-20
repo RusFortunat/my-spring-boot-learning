@@ -30,7 +30,7 @@ public class ProductCreatedEventHandler {
 
     @KafkaListener(topics="product-created-events-topic", groupId = "product-created-events")
     public void handle(@Payload ProductCreatedEvent event,
-                       @Header("messageId") byte[] messageId,
+                       @Header("messageId") String messageId,
                        @Header(value = KafkaHeaders.RECEIVED_KEY, required = false) String messageKey) {
 
         // check if message was processed before

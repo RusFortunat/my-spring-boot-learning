@@ -10,7 +10,7 @@ spring:
     username: postgres
     password: postgres
     name: postgres
-    driver: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
@@ -18,7 +18,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   kafka:
@@ -31,7 +31,7 @@ spring:
         spring.json.use.type.headers: false
         spring.json.value.default.type: com.appsdeveloperblog.ws.core.ProductCreatedEvent
 
-logging:
-  level:
-    org.springframework.kafka.listener: WARN
-    org.springframework.kafka.listener.DefaultErrorHandler: DEBUG
+#logging:
+#  level:
+#    org.springframework.kafka.listener: DEBUG
+#    org.springframework.kafka.listener.KafkaMessageListenerContainer: DEBUG
