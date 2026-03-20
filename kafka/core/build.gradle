@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'maven-publish'
 	id 'org.springframework.boot' version '4.0.3'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -18,9 +19,29 @@ repositories {
 	mavenCentral()
 }
 
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+
+			// Resolve and write actual versions into the published metadata
+			versionMapping {
+				usage('java-api') {
+					fromResolutionOf('runtimeClasspath')
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
+		}
+	}
+	repositories {
+		mavenLocal()
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation project(':core')
 	compileOnly 'org.projectlombok:lombok:1.18.32'
 	annotationProcessor 'org.projectlombok:lombok:1.18.32'
 
