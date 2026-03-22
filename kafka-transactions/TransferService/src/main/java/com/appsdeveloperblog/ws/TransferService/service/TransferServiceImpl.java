@@ -1,11 +1,15 @@
 package com.appsdeveloperblog.ws.TransferService.service;
 
+import com.appsdeveloperblog.ws.TransferService.entity.TransferEntity;
 import com.appsdeveloperblog.ws.TransferService.error.TransferServiceException;
 import com.appsdeveloperblog.ws.TransferService.model.TransferRestModel;
+import com.appsdeveloperblog.ws.TransferService.repository.TransferRepository;
 import com.appsdeveloperblog.ws.core.events.DepositRequestedEvent;
 import com.appsdeveloperblog.ws.core.events.WithdrawalRequestedEvent;
+import org.apache.kafka.common.Uuid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -22,20 +26,23 @@ import java.rmi.ConnectException;
 public class TransferServiceImpl implements TransferService {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    private KafkaTemplate<String, Object> kafkaTemplate;
-    private Environment environment;
-    private RestTemplate restTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final Environment environment;
+    private final RestTemplate restTemplate;
+    private final TransferRepository transferRepository;
 
     public TransferServiceImpl(KafkaTemplate<String, Object> kafkaTemplate,
                                Environment environment,
-                               RestTemplate restTemplate) {
+                               RestTemplate restTemplate,
+                               TransferRepository transferRepository) {
         this.kafkaTemplate = kafkaTemplate;
         this.environment = environment;
         this.restTemplate = restTemplate;
+        this.transferRepository = transferRepository;
     }
 
     @Transactional(
-        value="kafkaTransactionManager",
+        value="transactionManager",
         rollbackFor= { TransferServiceException.class, ConnectException.class},
         noRollbackFor= { IOException.class } // just an example
     )
@@ -47,6 +54,13 @@ public class TransferServiceImpl implements TransferService {
             transferRestModel.getRecipientId(), transferRestModel.getAmount());
 
         try {
+
+            // save the event details into a database
+            TransferEntity transferEntity = new TransferEntity();
+            BeanUtils.copyProperties(transferRestModel, transferEntity);
+            transferEntity.setTransferId(Uuid.randomUuid().toString());
+            transferRepository.save(transferEntity);
+
             kafkaTemplate.send(environment.getProperty("withdraw-money-topic", "withdraw-money-topic"),
                 withdrawalEvent);
             LOGGER.info("Sent event to withdrawal topic.");
