@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="58b54d9d-d841-4044-8a4c-2a6041053bb8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../TransferService/docker/environment.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/appsdeveloperblog/ws/mockservice/MockserviceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/appsdeveloperblog/ws/mockservice/StatusCheckController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/appsdeveloperblog/ws/mockservice/MockserviceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DepositService/src/main/java/com/appsdeveloperblog/ws/DepositService/KafkaConsumerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DepositService/src/main/java/com/appsdeveloperblog/ws/DepositService/KafkaConsumerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DepositService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../DepositService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/TransferServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/TransferServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/model/TransferRestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/model/TransferRestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/service/TransferServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/src/main/java/com/appsdeveloperblog/ws/TransferService/service/TransferServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TransferService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../TransferService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WithdrawalService/src/main/java/com/appsdeveloperblog/ws/WithdrawalService/config/KafkaConsumerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../WithdrawalService/src/main/java/com/appsdeveloperblog/ws/WithdrawalService/config/KafkaConsumerConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WithdrawalService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../WithdrawalService/src/main/resources/application.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "RusFortunat"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RusFortunat/my-spring-boot-learning.git",
+    "accountId": "d55393a9-d8a9-4f83-80ec-d6b272313de9"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3BIwPD1mWrZ6R8q3SzOEHqG3U9W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.MockserviceApplication.executor": "Run",
+    "git-widget-placeholder": "transactions",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Java Projects/my-spring-boot-learning/kafka-transactions/mockservice/src/main/java/com/appsdeveloperblog/ws/mockservice",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java Projects\my-spring-boot-learning\kafka-transactions\mockservice\src\main\java\com\appsdeveloperblog\ws\mockservice" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MockserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mockservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.appsdeveloperblog.ws.mockservice.MockserviceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="58b54d9d-d841-4044-8a4c-2a6041053bb8" name="Changes" comment="" />
+      <created>1774189865767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774189865767</updated>
+      <workItem from="1774189866801" duration="814000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
