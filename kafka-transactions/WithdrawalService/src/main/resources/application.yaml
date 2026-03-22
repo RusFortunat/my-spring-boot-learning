@@ -1,3 +1,13 @@
+server:
+  port: 0
+
 spring:
   application:
     name: WithdrawalService
+
+  kafka:
+    consumer:
+      group-id: amount-widthrawal-event
+      properties:
+        spring.json.trusted.packages: com.appsdeveloperblog.*
+    bootstrap-servers: localhost:9092
