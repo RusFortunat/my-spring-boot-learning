@@ -1,14 +1,17 @@
 package com.appsdeveloperblog.ws.products.service;
 
+import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
 import com.appsdeveloperblog.ws.products.config.TopicProperties;
 import com.appsdeveloperblog.ws.products.entity.Product;
 import com.appsdeveloperblog.ws.products.repository.ProductRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -52,8 +55,15 @@ public class ProductService {
 //        });
 
         // synchronous variant
+        ProducerRecord<String, ProductCreatedEvent> record = new ProducerRecord<>(
+            topicProperties.name(),
+            product.getId().toString(),
+            productCreatedEvent
+        );
+//        record.headers().add("messageId", UUID.randomUUID().toString().getBytes());
+        record.headers().add("messageId", "123".getBytes());
         SendResult<String, ProductCreatedEvent> result =
-            kafkaTemplate.send(topicProperties.name(), product.getId().toString(), productCreatedEvent).get();
+            kafkaTemplate.send(record).get();
 
         log.info("New Product was sent to:");
         log.info("Topic: {}", result.getRecordMetadata().topic());
