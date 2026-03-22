@@ -38,13 +38,15 @@ public class KafkaConsumerConfiguration {
 		Map<String, Object> config = new HashMap<>();
 
 		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-				environment.getProperty("spring.kafka.consumer.bootstrap-servers"));
+			environment.getProperty("spring.kafka.consumer.bootstrap-servers"));
 		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
 		config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JacksonJsonDeserializer.class);
 		config.put(ConsumerConfig.GROUP_ID_CONFIG, environment.getProperty("spring.kafka.consumer.group-id"));
 		config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES,
-				environment.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
+			environment.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
+		config.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG,
+			environment.getProperty("spring.kafka.consumer.isolation-level", "READ_COMMITTED").toLowerCase());
 
 		return new DefaultKafkaConsumerFactory<>(config);
 	}
