@@ -5,6 +5,20 @@ spring:
   application:
     name: TransferService
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    name: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
   kafka:
     producer:
       bootstrap-servers: localhost:9092
@@ -22,7 +36,10 @@ spring:
 withdraw-money-topic: withdraw-money-topic
 deposit-money-topic: deposit-money-topic
 
-logging.level.org.springframework:
-  transaction: TRACE
-  kafka.transaction: TRACE
+logging.level.org:
+  springframework:
+    transaction: DEBUG
+    kafka.transaction: DEBUG
+    orm.jpa.JpaTransactionManager: DEBUG
+  apache.kafka.clients.producer.internals.TransactionManager: DEBUG
 
